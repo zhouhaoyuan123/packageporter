@@ -197,6 +197,11 @@ async function processInstallation(jobId: number) {
       errorMessage: error.message,
       completedAt: new Date(),
     });
+
+    // Delete failed job after a short delay to allow client to see the error
+    setTimeout(async () => {
+      await storage.deleteInstallationJob(jobId);
+    }, 5000); // 5 seconds delay
   }
 }
 

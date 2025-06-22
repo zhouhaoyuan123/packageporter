@@ -58,8 +58,17 @@ export class MemStorage implements IStorage {
     const jobsToDelete: number[] = [];
     
     this.installationJobs.forEach((job, id) => {
+      // Delete expired completed jobs
       if (job.expiresAt && job.expiresAt < now) {
         jobsToDelete.push(id);
+      }
+      // Delete failed jobs older than 10 seconds
+      if (job.status === "failed" && job.completedAt) {
+        const tenSecondsAgo = new Date();
+        tenSecondsAgo.setSeconds(tenSecondsAgo.getSeconds() - 10);
+        if (job.completedAt < tenSecondsAgo) {
+          jobsToDelete.push(id);
+        }
       }
     });
     

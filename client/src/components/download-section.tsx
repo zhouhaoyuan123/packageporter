@@ -13,7 +13,7 @@ export function DownloadSection({ jobId }: DownloadSectionProps) {
   const [showContents, setShowContents] = useState(false);
   const { toast } = useToast();
   
-  const { data: job, isLoading } = useQuery({
+  const { data: job, isLoading, isError } = useQuery({
     queryKey: [`/api/installations/${jobId}`],
     refetchInterval: (data) => {
       if (data?.state?.data?.status === "completed") {
@@ -22,13 +22,15 @@ export function DownloadSection({ jobId }: DownloadSectionProps) {
       return 2000;
     },
     enabled: !!jobId,
+    retry: false,
   });
 
-  if (isLoading || !job || job.status !== "completed") {
+  // If job was deleted or doesn't exist, don't show download section
+  if (isError || isLoading || !job || (job as any).status !== "completed") {
     return null;
   }
 
-  const packages = job.packages as Array<{ name: string; version?: string }>;
+  const packages = (job as any).packages as Array<{ name: string; version?: string }>;
   const packageCount = packages.length;
   const downloadUrl = `${window.location.origin}/api/installations/${jobId}/download`;
 
@@ -73,7 +75,7 @@ export function DownloadSection({ jobId }: DownloadSectionProps) {
               <div className="text-sm text-gray-600">Packages Installed</div>
             </div>
             <div className="bg-white rounded-lg p-4 border border-npm-border">
-              <div className="text-2xl font-bold text-npm-red">{job.bundleSize || "Unknown"}</div>
+              <div className="text-2xl font-bold text-npm-red">{(job as any).bundleSize || "Unknown"}</div>
               <div className="text-sm text-gray-600">Bundle Size</div>
             </div>
             <div className="bg-white rounded-lg p-4 border border-npm-border">
