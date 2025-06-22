@@ -5,6 +5,7 @@ export interface IStorage {
   getInstallationJob(id: number): Promise<InstallationJob | undefined>;
   updateInstallationJob(id: number, updates: Partial<InstallationJob>): Promise<InstallationJob | undefined>;
   deleteInstallationJob(id: number): Promise<void>;
+  cleanupExpiredJobs(): Promise<void>;
 }
 
 export class MemStorage implements IStorage {
@@ -29,6 +30,7 @@ export class MemStorage implements IStorage {
       errorMessage: null,
       createdAt: new Date(),
       completedAt: null,
+      expiresAt: null,
     };
     this.installationJobs.set(id, job);
     return job;
@@ -49,6 +51,21 @@ export class MemStorage implements IStorage {
 
   async deleteInstallationJob(id: number): Promise<void> {
     this.installationJobs.delete(id);
+  }
+
+  async cleanupExpiredJobs(): Promise<void> {
+    const now = new Date();
+    const jobsToDelete: number[] = [];
+    
+    this.installationJobs.forEach((job, id) => {
+      if (job.expiresAt && job.expiresAt < now) {
+        jobsToDelete.push(id);
+      }
+    });
+    
+    for (const id of jobsToDelete) {
+      this.installationJobs.delete(id);
+    }
   }
 }
 

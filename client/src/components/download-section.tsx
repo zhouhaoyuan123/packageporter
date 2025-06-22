@@ -1,13 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Download, Eye, Package as PackageIcon, Info } from "lucide-react";
+import { CheckCircle, Download, Eye, Package as PackageIcon, Info, Copy, FolderOpen } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 interface DownloadSectionProps {
   jobId: number;
 }
 
 export function DownloadSection({ jobId }: DownloadSectionProps) {
+  const [showContents, setShowContents] = useState(false);
+  const { toast } = useToast();
+  
   const { data: job, isLoading } = useQuery({
     queryKey: [`/api/installations/${jobId}`],
     refetchInterval: (data) => {
@@ -25,9 +30,30 @@ export function DownloadSection({ jobId }: DownloadSectionProps) {
 
   const packages = job.packages as Array<{ name: string; version?: string }>;
   const packageCount = packages.length;
+  const downloadUrl = `${window.location.origin}/api/installations/${jobId}/download`;
 
   const handleDownload = () => {
     window.open(`/api/installations/${jobId}/download`, '_blank');
+  };
+
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(downloadUrl);
+      toast({
+        title: "Link Copied",
+        description: "Download link has been copied to your clipboard.",
+      });
+    } catch (error) {
+      toast({
+        title: "Copy Failed",
+        description: "Unable to copy link to clipboard.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleViewContents = () => {
+    setShowContents(!showContents);
   };
 
   return (
@@ -92,23 +118,58 @@ export function DownloadSection({ jobId }: DownloadSectionProps) {
             Download Bundle (packages.zip)
           </Button>
           <Button
+            onClick={handleViewContents}
             variant="outline"
             className="flex-1 bg-white text-npm-dark px-8 py-4 rounded-lg border-2 border-npm-red hover:bg-npm-bg transition-colors font-medium flex items-center justify-center text-lg"
           >
             <Eye className="mr-3 h-5 w-5" />
-            View Bundle Contents
+            {showContents ? "Hide Contents" : "View Contents"}
           </Button>
         </div>
 
+        {/* Copy Download Link */}
+        <div className="mt-4">
+          <Button
+            onClick={handleCopyLink}
+            variant="outline"
+            className="w-full bg-white text-npm-dark px-4 py-3 rounded-lg border border-npm-border hover:bg-npm-bg transition-colors font-medium flex items-center justify-center"
+          >
+            <Copy className="mr-2 h-4 w-4" />
+            Copy Download Link
+          </Button>
+        </div>
+
+        {/* Bundle Contents */}
+        {showContents && (
+          <div className="mt-6 p-4 bg-npm-dark rounded-lg">
+            <h5 className="font-medium text-white mb-3 flex items-center">
+              <FolderOpen className="mr-2 h-4 w-4" />
+              Bundle Contents
+            </h5>
+            <div className="font-mono text-sm text-green-400 space-y-1">
+              <div>📁 packages.zip</div>
+              <div className="ml-4">📄 package.json</div>
+              <div className="ml-4">📄 package-lock.json</div>
+              <div className="ml-4">📁 node_modules/</div>
+              {packages.map((pkg, index) => (
+                <div key={index} className="ml-8">
+                  📁 {pkg.name}/
+                </div>
+              ))}
+              <div className="ml-8 text-gray-400">... and all dependencies</div>
+            </div>
+          </div>
+        )}
+
         {/* Download Info */}
-        <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <div className="mt-6 p-4 bg-orange-50 border border-orange-200 rounded-lg">
           <div className="flex items-start">
-            <Info className="text-blue-500 mr-3 mt-1 h-5 w-5" />
+            <Info className="text-orange-500 mr-3 mt-1 h-5 w-5" />
             <div>
-              <h5 className="font-medium text-blue-900 mb-1">Download Information</h5>
-              <p className="text-sm text-blue-700">
+              <h5 className="font-medium text-orange-900 mb-1">Download Information</h5>
+              <p className="text-sm text-orange-700">
                 Your bundle includes node_modules, package.json, and package-lock.json. 
-                The download link will be available for 24 hours.
+                The download link will expire in 15 minutes and files will be automatically deleted.
               </p>
             </div>
           </div>

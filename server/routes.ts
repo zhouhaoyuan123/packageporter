@@ -10,6 +10,43 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+async function cleanupExpiredFiles(): Promise<void> {
+  try {
+    const tempDir = path.join(__dirname, "..", "temp");
+    const files = await fs.readdir(tempDir).catch(() => []);
+    
+    for (const file of files) {
+      if (file.startsWith("bundle-") && file.endsWith(".zip")) {
+        const filePath = path.join(tempDir, file);
+        const stats = await fs.stat(filePath).catch(() => null);
+        
+        if (stats) {
+          // Delete files older than 15 minutes
+          const fifteenMinutesAgo = new Date();
+          fifteenMinutesAgo.setMinutes(fifteenMinutesAgo.getMinutes() - 15);
+          
+          if (stats.mtime < fifteenMinutesAgo) {
+            await fs.unlink(filePath).catch(() => {});
+            console.log(`Cleaned up expired file: ${file}`);
+          }
+        }
+      }
+    }
+  } catch (error) {
+    console.error("File cleanup error:", error);
+  }
+}
+
+// Start cleanup timer
+setInterval(async () => {
+  try {
+    await storage.cleanupExpiredJobs();
+    await cleanupExpiredFiles();
+  } catch (error) {
+    console.error("Cleanup error:", error);
+  }
+}, 60000); // Run every minute
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Create installation job
   app.post("/api/installations", async (req, res) => {
@@ -52,6 +89,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       if (!job || job.status !== "completed" || !job.downloadPath) {
         return res.status(404).json({ message: "Bundle not available for download" });
+      }
+
+      // Check if bundle has expired
+      if (job.expiresAt && job.expiresAt < new Date()) {
+        return res.status(410).json({ message: "Download link has expired" });
       }
       
       const filePath = path.join(__dirname, "..", job.downloadPath);
@@ -131,6 +173,10 @@ async function processInstallation(jobId: number) {
     const stats = await fs.stat(bundlePath);
     const bundleSize = formatBytes(stats.size);
 
+    // Set expiration to 15 minutes from completion
+    const expiresAt = new Date();
+    expiresAt.setMinutes(expiresAt.getMinutes() + 15);
+
     await storage.updateInstallationJob(jobId, {
       status: "completed",
       currentStep: "Bundle ready for download",
@@ -138,6 +184,7 @@ async function processInstallation(jobId: number) {
       downloadPath: `temp/bundle-${jobId}.zip`,
       bundleSize,
       completedAt: new Date(),
+      expiresAt,
     });
 
     // Clean up temp directory (keep only the zip)

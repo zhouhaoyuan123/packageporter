@@ -19,6 +19,7 @@ export const installationJobs = pgTable("installation_jobs", {
   errorMessage: text("error_message"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   completedAt: timestamp("completed_at"),
+  expiresAt: timestamp("expires_at"),
 });
 
 export const insertPackageSchema = createInsertSchema(packages).pick({
