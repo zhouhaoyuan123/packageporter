@@ -61,6 +61,7 @@ export class MemStorage implements IStorage {
       // Delete expired completed jobs
       if (job.expiresAt && job.expiresAt < now) {
         jobsToDelete.push(id);
+        console.log(`Cleaning up expired job ${id}`);
       }
       // Delete failed jobs older than 10 seconds
       if (job.status === "failed" && job.completedAt) {
@@ -68,6 +69,7 @@ export class MemStorage implements IStorage {
         tenSecondsAgo.setSeconds(tenSecondsAgo.getSeconds() - 10);
         if (job.completedAt < tenSecondsAgo) {
           jobsToDelete.push(id);
+          console.log(`Cleaning up failed job ${id}`);
         }
       }
     });

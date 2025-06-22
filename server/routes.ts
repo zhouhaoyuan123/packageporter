@@ -37,7 +37,7 @@ async function cleanupExpiredFiles(): Promise<void> {
   }
 }
 
-// Start cleanup timer
+// Start cleanup timer - run more frequently to catch failed jobs
 setInterval(async () => {
   try {
     await storage.cleanupExpiredJobs();
@@ -45,7 +45,7 @@ setInterval(async () => {
   } catch (error) {
     console.error("Cleanup error:", error);
   }
-}, 60000); // Run every minute
+}, 10000); // Run every 10 seconds
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Create installation job
@@ -200,8 +200,17 @@ async function processInstallation(jobId: number) {
 
     // Delete failed job after a short delay to allow client to see the error
     setTimeout(async () => {
-      await storage.deleteInstallationJob(jobId);
-    }, 5000); // 5 seconds delay
+      try {
+        await storage.deleteInstallationJob(jobId);
+        console.log(`Deleted failed job ${jobId}`);
+        
+        // Also clean up any temporary files for this job
+        const tempDir = path.join(__dirname, "..", "temp", `job-${jobId}`);
+        await fs.rm(tempDir, { recursive: true, force: true }).catch(() => {});
+      } catch (error) {
+        console.error(`Error deleting failed job ${jobId}:`, error);
+      }
+    }, 3000); // 3 seconds delay
   }
 }
 
