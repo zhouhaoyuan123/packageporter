@@ -172,22 +172,31 @@ function installPackage(cwd: string, packageSpec: string): Promise<void> {
 }
 
 function createBundle(tempDir: string, jobId: number): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const bundlePath = path.join(__dirname, "..", "temp", `bundle-${jobId}.zip`);
-    const output = require("fs").createWriteStream(bundlePath);
-    const archive = archiver("zip", { zlib: { level: 9 } });
+  return new Promise(async (resolve, reject) => {
+    try {
+      const bundlePath = path.join(__dirname, "..", "temp", `bundle-${jobId}.zip`);
+      
+      // Ensure temp directory exists
+      await fs.mkdir(path.dirname(bundlePath), { recursive: true });
+      
+      const { createWriteStream } = await import("fs");
+      const output = createWriteStream(bundlePath);
+      const archive = archiver("zip", { zlib: { level: 9 } });
 
-    output.on("close", () => {
-      resolve(bundlePath);
-    });
+      output.on("close", () => {
+        resolve(bundlePath);
+      });
 
-    archive.on("error", (err) => {
-      reject(err);
-    });
+      archive.on("error", (err: any) => {
+        reject(err);
+      });
 
-    archive.pipe(output);
-    archive.directory(tempDir, false);
-    archive.finalize();
+      archive.pipe(output);
+      archive.directory(tempDir, false);
+      archive.finalize();
+    } catch (error) {
+      reject(error);
+    }
   });
 }
 
