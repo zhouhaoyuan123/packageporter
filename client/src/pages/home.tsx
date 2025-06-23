@@ -5,6 +5,7 @@ import { DownloadSection } from "@/components/download-section";
 import { LanguageThemeToggle } from "@/components/LanguageThemeToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Package, FileArchive, Shield, Clock, Mail } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Home() {
   const [currentJobId, setCurrentJobId] = useState<number | null>(null);
@@ -94,8 +95,8 @@ export default function Home() {
               <span className="text-npm-dark dark:text-white font-medium">{t.appTitle}</span>
             </div>
             <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 text-sm text-gray-600 dark:text-gray-300">
-              <a href="#" className="hover:text-npm-red transition-colors">{t.privacyPolicy}</a>
-              <a href="#" className="hover:text-npm-red transition-colors">{t.termsOfService}</a>
+              <Link href="/privacy-policy" className="hover:text-npm-red transition-colors">{t.privacyPolicy}</Link>
+              <Link href="/terms-of-service" className="hover:text-npm-red transition-colors">{t.termsOfService}</Link>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
                 <a 

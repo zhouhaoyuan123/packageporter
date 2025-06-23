@@ -71,6 +71,42 @@ export interface Translations {
   termsOfService: string;
   contactSupport: string;
   
+  // Privacy Policy
+  privacySection1Title: string;
+  privacySection1Content: string;
+  privacySection2Title: string;
+  privacySection2Item1: string;
+  privacySection2Item2: string;
+  privacySection2Item3: string;
+  privacySection3Title: string;
+  privacySection3Content: string;
+  privacySection4Title: string;
+  privacySection4Content: string;
+  privacySection5Title: string;
+  privacySection5Content: string;
+  
+  // Terms of Service
+  termsSection1Title: string;
+  termsSection1Content: string;
+  termsSection2Title: string;
+  termsSection2Item1: string;
+  termsSection2Item2: string;
+  termsSection2Item3: string;
+  termsSection2Item4: string;
+  termsSection3Title: string;
+  termsSection3Content: string;
+  termsSection4Title: string;
+  termsSection4Content: string;
+  termsSection5Title: string;
+  termsSection5Content: string;
+  termsSection6Title: string;
+  termsSection6Content: string;
+  
+  // Contact and Common
+  contactTitle: string;
+  contactContent: string;
+  lastUpdated: string;
+  
   // Theme and Language
   theme: string;
   language: string;
@@ -144,6 +180,39 @@ const translations: Record<Language, Translations> = {
     termsOfService: "Terms of Service",
     contactSupport: "Contact Support",
     
+    privacySection1Title: "Information We Collect",
+    privacySection1Content: "We collect minimal information necessary to provide our package installation service. This may include package names, versions, and installation metadata.",
+    privacySection2Title: "How We Use Your Information",
+    privacySection2Item1: "To process your package installation requests",
+    privacySection2Item2: "To provide download links for your bundled packages",
+    privacySection2Item3: "To improve our service quality and performance",
+    privacySection3Title: "Data Storage and Security",
+    privacySection3Content: "All installation data and generated bundles are automatically deleted after 15 minutes. We do not store personal information beyond what is necessary for service operation.",
+    privacySection4Title: "Third-Party Services",
+    privacySection4Content: "Our service interacts with the NPM registry to download packages. Please refer to NPM's privacy policy for information about their data practices.",
+    privacySection5Title: "Changes to Privacy Policy",
+    privacySection5Content: "We may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date.",
+    
+    termsSection1Title: "Acceptance of Terms",
+    termsSection1Content: "By using this package installation service, you agree to be bound by these terms of service and our privacy policy.",
+    termsSection2Title: "Service Description",
+    termsSection2Item1: "Install NPM packages in isolated environments",
+    termsSection2Item2: "Bundle packages with dependencies into downloadable archives",
+    termsSection2Item3: "Provide temporary download links (15-minute expiration)",
+    termsSection2Item4: "Automatically clean up temporary files and data",
+    termsSection3Title: "User Responsibilities",
+    termsSection3Content: "You are responsible for ensuring that the packages you request are legitimate and that you have the right to download and use them. You must not use this service for malicious purposes.",
+    termsSection4Title: "Service Limitations",
+    termsSection4Content: "This service is provided as-is without warranties. We may limit usage, modify features, or discontinue the service at any time without notice.",
+    termsSection5Title: "Liability",
+    termsSection5Content: "We are not liable for any damages resulting from the use of this service, including but not limited to data loss, security issues, or service interruptions.",
+    termsSection6Title: "Modifications",
+    termsSection6Content: "We reserve the right to modify these terms at any time. Continued use of the service after changes indicates acceptance of the new terms.",
+    
+    contactTitle: "Contact Information",
+    contactContent: "If you have questions about this privacy policy or terms of service, please contact us at:",
+    lastUpdated: "Last updated",
+    
     theme: "Theme",
     language: "Language",
     light: "Light",
@@ -214,6 +283,39 @@ const translations: Record<Language, Translations> = {
     privacyPolicy: "隐私政策",
     termsOfService: "服务条款",
     contactSupport: "联系支持",
+    
+    privacySection1Title: "我们收集的信息",
+    privacySection1Content: "我们收集提供包安装服务所必需的最少信息。这可能包括包名称、版本和安装元数据。",
+    privacySection2Title: "我们如何使用您的信息",
+    privacySection2Item1: "处理您的包安装请求",
+    privacySection2Item2: "为您的捆绑包提供下载链接",
+    privacySection2Item3: "改善我们的服务质量和性能",
+    privacySection3Title: "数据存储和安全",
+    privacySection3Content: "所有安装数据和生成的捆绑包在15分钟后自动删除。我们不会存储超出服务运营必需的个人信息。",
+    privacySection4Title: "第三方服务",
+    privacySection4Content: "我们的服务与NPM注册表交互以下载包。请参考NPM的隐私政策了解其数据实践信息。",
+    privacySection5Title: "隐私政策变更",
+    privacySection5Content: "我们可能会不时更新此隐私政策。任何变更将在此页面发布并更新修订日期。",
+    
+    termsSection1Title: "接受条款",
+    termsSection1Content: "使用此包安装服务，即表示您同意受这些服务条款和我们的隐私政策约束。",
+    termsSection2Title: "服务描述",
+    termsSection2Item1: "在隔离环境中安装NPM包",
+    termsSection2Item2: "将包与依赖项打包成可下载的存档",
+    termsSection2Item3: "提供临时下载链接（15分钟过期）",
+    termsSection2Item4: "自动清理临时文件和数据",
+    termsSection3Title: "用户责任",
+    termsSection3Content: "您有责任确保您请求的包是合法的，并且您有权下载和使用它们。您不得将此服务用于恶意目的。",
+    termsSection4Title: "服务限制",
+    termsSection4Content: "此服务按原样提供，不提供保证。我们可能随时限制使用、修改功能或停止服务，恕不另行通知。",
+    termsSection5Title: "责任",
+    termsSection5Content: "我们对使用此服务造成的任何损害不承担责任，包括但不限于数据丢失、安全问题或服务中断。",
+    termsSection6Title: "修改",
+    termsSection6Content: "我们保留随时修改这些条款的权利。在变更后继续使用服务表示接受新条款。",
+    
+    contactTitle: "联系信息",
+    contactContent: "如果您对此隐私政策或服务条款有疑问，请联系我们：",
+    lastUpdated: "最后更新",
     
     theme: "主题",
     language: "语言",
@@ -286,6 +388,39 @@ const translations: Record<Language, Translations> = {
     termsOfService: "Términos de Servicio",
     contactSupport: "Contactar Soporte",
     
+    privacySection1Title: "Información que Recopilamos",
+    privacySection1Content: "Recopilamos la información mínima necesaria para proporcionar nuestro servicio de instalación de paquetes. Esto puede incluir nombres de paquetes, versiones y metadatos de instalación.",
+    privacySection2Title: "Cómo Usamos Su Información",
+    privacySection2Item1: "Para procesar sus solicitudes de instalación de paquetes",
+    privacySection2Item2: "Para proporcionar enlaces de descarga para sus paquetes empaquetados",
+    privacySection2Item3: "Para mejorar la calidad y rendimiento de nuestro servicio",
+    privacySection3Title: "Almacenamiento y Seguridad de Datos",
+    privacySection3Content: "Todos los datos de instalación y paquetes generados se eliminan automáticamente después de 15 minutos. No almacenamos información personal más allá de lo necesario para la operación del servicio.",
+    privacySection4Title: "Servicios de Terceros",
+    privacySection4Content: "Nuestro servicio interactúa con el registro NPM para descargar paquetes. Consulte la política de privacidad de NPM para obtener información sobre sus prácticas de datos.",
+    privacySection5Title: "Cambios en la Política de Privacidad",
+    privacySection5Content: "Podemos actualizar esta política de privacidad de vez en cuando. Cualquier cambio se publicará en esta página con una fecha de revisión actualizada.",
+    
+    termsSection1Title: "Aceptación de Términos",
+    termsSection1Content: "Al usar este servicio de instalación de paquetes, acepta estar sujeto a estos términos de servicio y nuestra política de privacidad.",
+    termsSection2Title: "Descripción del Servicio",
+    termsSection2Item1: "Instalar paquetes NPM en entornos aislados",
+    termsSection2Item2: "Empaquetar paquetes con dependencias en archivos descargables",
+    termsSection2Item3: "Proporcionar enlaces de descarga temporales (expiración de 15 minutos)",
+    termsSection2Item4: "Limpiar automáticamente archivos y datos temporales",
+    termsSection3Title: "Responsabilidades del Usuario",
+    termsSection3Content: "Usted es responsable de asegurar que los paquetes que solicita sean legítimos y que tenga derecho a descargarlos y usarlos. No debe usar este servicio para propósitos maliciosos.",
+    termsSection4Title: "Limitaciones del Servicio",
+    termsSection4Content: "Este servicio se proporciona tal como está, sin garantías. Podemos limitar el uso, modificar características o discontinuar el servicio en cualquier momento sin aviso.",
+    termsSection5Title: "Responsabilidad",
+    termsSection5Content: "No somos responsables de ningún daño resultante del uso de este servicio, incluyendo pero no limitado a pérdida de datos, problemas de seguridad o interrupciones del servicio.",
+    termsSection6Title: "Modificaciones",
+    termsSection6Content: "Nos reservamos el derecho de modificar estos términos en cualquier momento. El uso continuado del servicio después de los cambios indica la aceptación de los nuevos términos.",
+    
+    contactTitle: "Información de Contacto",
+    contactContent: "Si tiene preguntas sobre esta política de privacidad o términos de servicio, contáctenos en:",
+    lastUpdated: "Última actualización",
+    
     theme: "Tema",
     language: "Idioma",
     light: "Claro",
@@ -356,6 +491,39 @@ const translations: Record<Language, Translations> = {
     privacyPolicy: "Politique de Confidentialité",
     termsOfService: "Conditions de Service",
     contactSupport: "Contacter le Support",
+    
+    privacySection1Title: "Informations que Nous Collectons",
+    privacySection1Content: "Nous collectons les informations minimales nécessaires pour fournir notre service d'installation de paquets. Cela peut inclure les noms de paquets, les versions et les métadonnées d'installation.",
+    privacySection2Title: "Comment Nous Utilisons Vos Informations",
+    privacySection2Item1: "Pour traiter vos demandes d'installation de paquets",
+    privacySection2Item2: "Pour fournir des liens de téléchargement pour vos paquets groupés",
+    privacySection2Item3: "Pour améliorer la qualité et les performances de notre service",
+    privacySection3Title: "Stockage et Sécurité des Données",
+    privacySection3Content: "Toutes les données d'installation et les paquets générés sont automatiquement supprimés après 15 minutes. Nous ne stockons pas d'informations personnelles au-delà de ce qui est nécessaire pour le fonctionnement du service.",
+    privacySection4Title: "Services Tiers",
+    privacySection4Content: "Notre service interagit avec le registre NPM pour télécharger des paquets. Veuillez consulter la politique de confidentialité de NPM pour des informations sur leurs pratiques de données.",
+    privacySection5Title: "Modifications de la Politique de Confidentialité",
+    privacySection5Content: "Nous pouvons mettre à jour cette politique de confidentialité de temps en temps. Tout changement sera publié sur cette page avec une date de révision mise à jour.",
+    
+    termsSection1Title: "Acceptation des Conditions",
+    termsSection1Content: "En utilisant ce service d'installation de paquets, vous acceptez d'être lié par ces conditions de service et notre politique de confidentialité.",
+    termsSection2Title: "Description du Service",
+    termsSection2Item1: "Installer des paquets NPM dans des environnements isolés",
+    termsSection2Item2: "Grouper des paquets avec des dépendances en archives téléchargeables",
+    termsSection2Item3: "Fournir des liens de téléchargement temporaires (expiration de 15 minutes)",
+    termsSection2Item4: "Nettoyer automatiquement les fichiers et données temporaires",
+    termsSection3Title: "Responsabilités de l'Utilisateur",
+    termsSection3Content: "Vous êtes responsable de vous assurer que les paquets que vous demandez sont légitimes et que vous avez le droit de les télécharger et de les utiliser. Vous ne devez pas utiliser ce service à des fins malveillantes.",
+    termsSection4Title: "Limitations du Service",
+    termsSection4Content: "Ce service est fourni tel quel, sans garanties. Nous pouvons limiter l'utilisation, modifier les fonctionnalités ou discontinuer le service à tout moment sans préavis.",
+    termsSection5Title: "Responsabilité",
+    termsSection5Content: "Nous ne sommes pas responsables des dommages résultant de l'utilisation de ce service, y compris mais sans s'y limiter la perte de données, les problèmes de sécurité ou les interruptions de service.",
+    termsSection6Title: "Modifications",
+    termsSection6Content: "Nous nous réservons le droit de modifier ces conditions à tout moment. L'utilisation continue du service après les changements indique l'acceptation des nouvelles conditions.",
+    
+    contactTitle: "Informations de Contact",
+    contactContent: "Si vous avez des questions sur cette politique de confidentialité ou ces conditions de service, veuillez nous contacter à :",
+    lastUpdated: "Dernière mise à jour",
     
     theme: "Thème",
     language: "Langue",
@@ -428,6 +596,39 @@ const translations: Record<Language, Translations> = {
     termsOfService: "Nutzungsbedingungen",
     contactSupport: "Support Kontaktieren",
     
+    privacySection1Title: "Informationen, die Wir Sammeln",
+    privacySection1Content: "Wir sammeln nur die minimalen Informationen, die zur Bereitstellung unseres Paketinstallationsdienstes erforderlich sind. Dies kann Paketnamen, Versionen und Installationsmetadaten umfassen.",
+    privacySection2Title: "Wie Wir Ihre Informationen Verwenden",
+    privacySection2Item1: "Zur Bearbeitung Ihrer Paketinstallationsanfragen",
+    privacySection2Item2: "Zur Bereitstellung von Download-Links für Ihre gebündelten Pakete",
+    privacySection2Item3: "Zur Verbesserung der Qualität und Leistung unseres Dienstes",
+    privacySection3Title: "Datenspeicherung und Sicherheit",
+    privacySection3Content: "Alle Installationsdaten und generierten Bundles werden nach 15 Minuten automatisch gelöscht. Wir speichern keine persönlichen Informationen über das hinaus, was für den Servicebetrieb erforderlich ist.",
+    privacySection4Title: "Drittanbieter-Services",
+    privacySection4Content: "Unser Service interagiert mit der NPM-Registry zum Herunterladen von Paketen. Bitte beachten Sie NPMs Datenschutzrichtlinie für Informationen über deren Datenpraktiken.",
+    privacySection5Title: "Änderungen der Datenschutzrichtlinie",
+    privacySection5Content: "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Alle Änderungen werden auf dieser Seite mit einem aktualisierten Revisionsdatum veröffentlicht.",
+    
+    termsSection1Title: "Annahme der Bedingungen",
+    termsSection1Content: "Durch die Nutzung dieses Paketinstallationsdienstes stimmen Sie zu, an diese Nutzungsbedingungen und unsere Datenschutzrichtlinie gebunden zu sein.",
+    termsSection2Title: "Servicebeschreibung",
+    termsSection2Item1: "NPM-Pakete in isolierten Umgebungen installieren",
+    termsSection2Item2: "Pakete mit Abhängigkeiten in herunterladbare Archive bündeln",
+    termsSection2Item3: "Temporäre Download-Links bereitstellen (15-Minuten-Ablauf)",
+    termsSection2Item4: "Automatische Bereinigung temporärer Dateien und Daten",
+    termsSection3Title: "Benutzerverantwortlichkeiten",
+    termsSection3Content: "Sie sind dafür verantwortlich sicherzustellen, dass die von Ihnen angeforderten Pakete legitim sind und dass Sie das Recht haben, sie herunterzuladen und zu verwenden. Sie dürfen diesen Service nicht für böswillige Zwecke nutzen.",
+    termsSection4Title: "Service-Einschränkungen",
+    termsSection4Content: "Dieser Service wird wie besehen ohne Garantien bereitgestellt. Wir können die Nutzung begrenzen, Funktionen ändern oder den Service jederzeit ohne Ankündigung einstellen.",
+    termsSection5Title: "Haftung",
+    termsSection5Content: "Wir haften nicht für Schäden, die durch die Nutzung dieses Services entstehen, einschließlich aber nicht beschränkt auf Datenverlust, Sicherheitsprobleme oder Service-Unterbrechungen.",
+    termsSection6Title: "Änderungen",
+    termsSection6Content: "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Die fortgesetzte Nutzung des Services nach Änderungen zeigt die Annahme der neuen Bedingungen an.",
+    
+    contactTitle: "Kontaktinformationen",
+    contactContent: "Wenn Sie Fragen zu dieser Datenschutzrichtlinie oder den Nutzungsbedingungen haben, kontaktieren Sie uns unter:",
+    lastUpdated: "Zuletzt aktualisiert",
+    
     theme: "Theme",
     language: "Sprache",
     light: "Hell",
@@ -499,6 +700,39 @@ const translations: Record<Language, Translations> = {
     termsOfService: "利用規約",
     contactSupport: "サポートに連絡",
     
+    privacySection1Title: "収集する情報",
+    privacySection1Content: "パッケージインストールサービスの提供に必要な最小限の情報を収集します。これにはパッケージ名、バージョン、インストールメタデータが含まれる場合があります。",
+    privacySection2Title: "情報の使用方法",
+    privacySection2Item1: "パッケージインストールリクエストの処理",
+    privacySection2Item2: "バンドルされたパッケージのダウンロードリンクの提供",
+    privacySection2Item3: "サービス品質とパフォーマンスの向上",
+    privacySection3Title: "データストレージとセキュリティ",
+    privacySection3Content: "すべてのインストールデータと生成されたバンドルは15分後に自動的に削除されます。サービス運営に必要な範囲を超えて個人情報を保存することはありません。",
+    privacySection4Title: "サードパーティサービス",
+    privacySection4Content: "当サービスはパッケージダウンロードのためにNPMレジストリと連携します。データ取り扱いについてはNPMのプライバシーポリシーをご参照ください。",
+    privacySection5Title: "プライバシーポリシーの変更",
+    privacySection5Content: "このプライバシーポリシーは随時更新される場合があります。変更はこのページに更新日付とともに掲載されます。",
+    
+    termsSection1Title: "利用規約の同意",
+    termsSection1Content: "このパッケージインストールサービスを使用することで、これらの利用規約と当社のプライバシーポリシーに同意したものとみなされます。",
+    termsSection2Title: "サービス内容",
+    termsSection2Item1: "分離された環境でのNPMパッケージのインストール",
+    termsSection2Item2: "依存関係を含むパッケージのダウンロード可能なアーカイブへのバンドル",
+    termsSection2Item3: "一時的なダウンロードリンクの提供（15分で期限切れ）",
+    termsSection2Item4: "一時ファイルとデータの自動クリーンアップ",
+    termsSection3Title: "ユーザーの責任",
+    termsSection3Content: "リクエストするパッケージが正当であり、ダウンロードと使用の権利があることを確認する責任があります。悪意のある目的でのサービス使用は禁止されています。",
+    termsSection4Title: "サービスの制限",
+    termsSection4Content: "このサービスは現状のまま、保証なしで提供されます。使用制限、機能の変更、サービスの停止を予告なく行う場合があります。",
+    termsSection5Title: "責任",
+    termsSection5Content: "データ損失、セキュリティ問題、サービス中断を含むがこれに限定されない、このサービスの使用により生じる損害について責任を負いません。",
+    termsSection6Title: "変更",
+    termsSection6Content: "これらの利用規約をいつでも変更する権利を留保します。変更後のサービス継続使用は新しい利用規約への同意を示します。",
+    
+    contactTitle: "連絡先情報",
+    contactContent: "このプライバシーポリシーまたは利用規約についてご質問がある場合は、以下までお問い合わせください：",
+    lastUpdated: "最終更新",
+    
     theme: "テーマ",
     language: "言語",
     light: "ライト",
@@ -569,6 +803,39 @@ const translations: Record<Language, Translations> = {
     privacyPolicy: "개인정보 보호정책",
     termsOfService: "서비스 약관",
     contactSupport: "지원 문의",
+    
+    privacySection1Title: "수집하는 정보",
+    privacySection1Content: "패키지 설치 서비스 제공에 필요한 최소한의 정보를 수집합니다. 여기에는 패키지 이름, 버전, 설치 메타데이터가 포함될 수 있습니다.",
+    privacySection2Title: "정보 사용 방법",
+    privacySection2Item1: "패키지 설치 요청 처리",
+    privacySection2Item2: "번들된 패키지의 다운로드 링크 제공",
+    privacySection2Item3: "서비스 품질 및 성능 개선",
+    privacySection3Title: "데이터 저장 및 보안",
+    privacySection3Content: "모든 설치 데이터와 생성된 번들은 15분 후 자동으로 삭제됩니다. 서비스 운영에 필요한 범위를 넘어서는 개인정보는 저장하지 않습니다.",
+    privacySection4Title: "제3자 서비스",
+    privacySection4Content: "저희 서비스는 패키지 다운로드를 위해 NPM 레지스트리와 상호작용합니다. 데이터 처리에 대한 정보는 NPM의 개인정보 보호정책을 참조하세요.",
+    privacySection5Title: "개인정보 보호정책 변경",
+    privacySection5Content: "이 개인정보 보호정책은 수시로 업데이트될 수 있습니다. 변경사항은 수정된 날짜와 함께 이 페이지에 게시됩니다.",
+    
+    termsSection1Title: "약관 동의",
+    termsSection1Content: "이 패키지 설치 서비스를 사용함으로써 이 서비스 약관과 개인정보 보호정책에 구속되는 것에 동의합니다.",
+    termsSection2Title: "서비스 설명",
+    termsSection2Item1: "격리된 환경에서 NPM 패키지 설치",
+    termsSection2Item2: "의존성과 함께 패키지를 다운로드 가능한 아카이브로 번들링",
+    termsSection2Item3: "임시 다운로드 링크 제공 (15분 만료)",
+    termsSection2Item4: "임시 파일 및 데이터 자동 정리",
+    termsSection3Title: "사용자 책임",
+    termsSection3Content: "요청하는 패키지가 합법적이며 다운로드 및 사용할 권리가 있음을 보장할 책임이 있습니다. 악의적인 목적으로 이 서비스를 사용해서는 안 됩니다.",
+    termsSection4Title: "서비스 제한",
+    termsSection4Content: "이 서비스는 보증 없이 현재 상태 그대로 제공됩니다. 사전 통지 없이 언제든지 사용을 제한하거나 기능을 수정하거나 서비스를 중단할 수 있습니다.",
+    termsSection5Title: "책임",
+    termsSection5Content: "데이터 손실, 보안 문제, 서비스 중단을 포함하되 이에 국한되지 않는 이 서비스 사용으로 인한 손해에 대해 책임지지 않습니다.",
+    termsSection6Title: "수정",
+    termsSection6Content: "언제든지 이 약관을 수정할 권리를 보유합니다. 변경 후 서비스를 계속 사용하면 새로운 약관에 동의하는 것으로 간주됩니다.",
+    
+    contactTitle: "연락처 정보",
+    contactContent: "이 개인정보 보호정책이나 서비스 약관에 대해 질문이 있으시면 다음으로 연락해 주세요:",
+    lastUpdated: "최종 업데이트",
     
     theme: "테마",
     language: "언어",
