@@ -1,4 +1,5 @@
 
+import { useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageThemeToggle } from "@/components/LanguageThemeToggle";
 import { Package, ArrowLeft } from "lucide-react";
@@ -6,6 +7,10 @@ import { Link } from "wouter";
 
 export default function TermsOfService() {
   const { t } = useLanguage();
+
+  useEffect(() => {
+    document.title = `${t.termsOfService} - ${t.appTitle}`;
+  }, [t]);
 
   return (
     <div className="min-h-screen bg-npm-bg dark:bg-gray-900 transition-colors">
