@@ -24,6 +24,19 @@ export default function NotFound() {
             <p className="text-gray-600 dark:text-gray-300 mb-6">
               {t.pageNotFoundDescription}
             </p>
+            
+            <Link href="/">
+              <Button className="bg-npm-red hover:bg-red-600 text-white">
+                <Home className="h-4 w-4 mr-2" />
+                {t.backToHome}
+              </Button>
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
 
             <Link href="/">
               <Button className="bg-npm-red text-white px-6 py-2 rounded-lg hover:bg-red-600 transition-colors flex items-center">
