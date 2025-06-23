@@ -18,7 +18,7 @@ function App() {
             <Route path="/" component={Home} />
             <Route path="/privacy-policy" component={PrivacyPolicy} />
             <Route path="/terms-of-service" component={TermsOfService} />
-            <Route component={NotFound} />
+            <Route path="/:rest*" component={NotFound} />
           </Router>
           <Toaster />
         </LanguageProvider>
