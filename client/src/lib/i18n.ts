@@ -106,6 +106,7 @@ export interface Translations {
   contactTitle: string;
   contactContent: string;
   lastUpdated: string;
+  lastUpdatedDate: string;
   
   // Theme and Language
   theme: string;
@@ -217,6 +218,7 @@ const translations: Record<Language, Translations> = {
     contactTitle: "Contact Information",
     contactContent: "If you have questions about this privacy policy or terms of service, please contact us at:",
     lastUpdated: "Last updated",
+    lastUpdatedDate: "December 15, 2024",
     
     theme: "Theme",
     language: "Language",
@@ -325,6 +327,7 @@ const translations: Record<Language, Translations> = {
     contactTitle: "联系信息",
     contactContent: "如果您对此隐私政策或服务条款有疑问，请联系我们：",
     lastUpdated: "最后更新",
+    lastUpdatedDate: "2024年12月15日",
     
     theme: "主题",
     language: "语言",
@@ -433,6 +436,7 @@ const translations: Record<Language, Translations> = {
     contactTitle: "Información de Contacto",
     contactContent: "Si tiene preguntas sobre esta política de privacidad o términos de servicio, contáctenos en:",
     lastUpdated: "Última actualización",
+    lastUpdatedDate: "15 de diciembre de 2024",
     
     theme: "Tema",
     language: "Idioma",
@@ -541,6 +545,7 @@ const translations: Record<Language, Translations> = {
     contactTitle: "Informations de Contact",
     contactContent: "Si vous avez des questions sur cette politique de confidentialité ou ces conditions de service, veuillez nous contacter à :",
     lastUpdated: "Dernière mise à jour",
+    lastUpdatedDate: "15 décembre 2024",
     
     theme: "Thème",
     language: "Langue",
@@ -649,6 +654,7 @@ const translations: Record<Language, Translations> = {
     contactTitle: "Kontaktinformationen",
     contactContent: "Wenn Sie Fragen zu dieser Datenschutzrichtlinie oder den Nutzungsbedingungen haben, kontaktieren Sie uns unter:",
     lastUpdated: "Zuletzt aktualisiert",
+    lastUpdatedDate: "15. Dezember 2024",
     
     theme: "Theme",
     language: "Sprache",
@@ -757,6 +763,7 @@ const translations: Record<Language, Translations> = {
     contactTitle: "連絡先情報",
     contactContent: "このプライバシーポリシーまたは利用規約についてご質問がある場合は、以下までお問い合わせください：",
     lastUpdated: "最終更新",
+    lastUpdatedDate: "2024年12月15日",
     
     theme: "テーマ",
     language: "言語",
@@ -865,6 +872,7 @@ const translations: Record<Language, Translations> = {
     contactTitle: "연락처 정보",
     contactContent: "이 개인정보 보호정책이나 서비스 약관에 대해 질문이 있으시면 다음으로 연락해 주세요:",
     lastUpdated: "최종 업데이트",
+    lastUpdatedDate: "2024년 12월 15일",
     
     theme: "테마",
     language: "언어",

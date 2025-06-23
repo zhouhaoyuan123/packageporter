@@ -91,7 +91,7 @@ export default function PrivacyPolicy() {
               </section>
 
               <div className="text-sm text-gray-500 dark:text-gray-400 mt-8 pt-4 border-t border-gray-200 dark:border-gray-600">
-                {t.lastUpdated}: December 15, 2024
+                {t.lastUpdated}: {t.lastUpdatedDate}
               </div>
             </div>
           </div>
