@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import Home from "./pages/home";
 import PrivacyPolicy from "./pages/privacy-policy";
 import TermsOfService from "./pages/terms-of-service";
+import NotFound from "./pages/not-found";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" component={Home} />
             <Route path="/privacy-policy" component={PrivacyPolicy} />
             <Route path="/terms-of-service" component={TermsOfService} />
+            <Route component={NotFound} />
           </Router>
           <Toaster />
         </LanguageProvider>
