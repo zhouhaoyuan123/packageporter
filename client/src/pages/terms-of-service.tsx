@@ -9,7 +9,14 @@ export default function TermsOfService() {
   const { t } = useLanguage();
 
   useEffect(() => {
-    document.title = `${t.termsOfService} - ${t.appTitle}`;
+    const title = `${t.termsOfService} - ${t.appTitle}`;
+    document.title = title;
+    // Force title update
+    setTimeout(() => {
+      if (document.title !== title) {
+        document.title = title;
+      }
+    }, 100);
   }, [t]);
 
   return (

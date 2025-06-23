@@ -78,8 +78,20 @@ export function serveStatic(app: Express) {
 
   app.use(express.static(distPath));
 
-  // fall through to index.html if the file doesn't exist
-  app.use("*", (_req, res) => {
+  // Serve static files first
+  app.get("*", (req, res, next) => {
+    // If it's an API route, skip to next middleware
+    if (req.path.startsWith("/api")) {
+      return next();
+    }
+    
+    // Check if the requested file exists
+    const filePath = path.join(distPath, req.path);
+    if (req.path !== "/" && fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+      return res.sendFile(filePath);
+    }
+    
+    // For all other routes (including client-side routes), serve index.html
     res.sendFile(path.resolve(distPath, "index.html"));
   });
 }

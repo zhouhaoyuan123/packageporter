@@ -9,7 +9,14 @@ export default function PrivacyPolicy() {
   const { t } = useLanguage();
 
   useEffect(() => {
-    document.title = `${t.privacyPolicy} - ${t.appTitle}`;
+    const title = `${t.privacyPolicy} - ${t.appTitle}`;
+    document.title = title;
+    // Force title update
+    setTimeout(() => {
+      if (document.title !== title) {
+        document.title = title;
+      }
+    }, 100);
   }, [t]);
 
   return (
