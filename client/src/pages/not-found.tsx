@@ -37,16 +37,3 @@ export default function NotFound() {
     </div>
   );
 }
-
-            <Link href="/">
-              <Button className="bg-npm-red text-white px-6 py-2 rounded-lg hover:bg-red-600 transition-colors flex items-center">
-                <Home className="mr-2 h-4 w-4" />
-                {t.backToHome}
-              </Button>
-            </Link>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  );
-}
