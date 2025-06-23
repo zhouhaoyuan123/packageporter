@@ -68,7 +68,7 @@ export async function setupVite(app: Express, server: Server) {
 }
 
 export function serveStatic(app: Express) {
-  const distPath = path.resolve(import.meta.dirname, "public");
+  const distPath = path.resolve(import.meta.dirname, "..", "dist", "public");
 
   if (!fs.existsSync(distPath)) {
     throw new Error(
@@ -76,22 +76,28 @@ export function serveStatic(app: Express) {
     );
   }
 
+  // Serve static assets
   app.use(express.static(distPath));
 
-  // Serve static files first
+  // Handle client-side routing - serve index.html for non-API routes
   app.get("*", (req, res, next) => {
     // If it's an API route, skip to next middleware
     if (req.path.startsWith("/api")) {
       return next();
     }
     
-    // Check if the requested file exists
+    // Check if the requested file exists as a static asset
     const filePath = path.join(distPath, req.path);
     if (req.path !== "/" && fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
       return res.sendFile(filePath);
     }
     
     // For all other routes (including client-side routes), serve index.html
-    res.sendFile(path.resolve(distPath, "index.html"));
+    const indexPath = path.resolve(distPath, "index.html");
+    if (fs.existsSync(indexPath)) {
+      res.sendFile(indexPath);
+    } else {
+      res.status(404).send("Application not found. Please run 'npm run build' first.");
+    }
   });
 }
