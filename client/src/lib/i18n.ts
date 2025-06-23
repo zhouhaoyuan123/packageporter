@@ -113,6 +113,11 @@ export interface Translations {
   light: string;
   dark: string;
   system: string;
+  
+  // 404 Page
+  pageNotFound: string;
+  pageNotFoundDescription: string;
+  backToHome: string;
 }
 
 const translations: Record<Language, Translations> = {
@@ -217,7 +222,11 @@ const translations: Record<Language, Translations> = {
     language: "Language",
     light: "Light",
     dark: "Dark",
-    system: "System"
+    system: "System",
+    
+    pageNotFound: "Page Not Found",
+    pageNotFoundDescription: "The page you're looking for doesn't exist or has been moved.",
+    backToHome: "Back to Home"
   },
   
   zh: {
@@ -321,7 +330,11 @@ const translations: Record<Language, Translations> = {
     language: "语言",
     light: "浅色",
     dark: "深色",
-    system: "系统"
+    system: "系统",
+    
+    pageNotFound: "页面未找到",
+    pageNotFoundDescription: "您要查找的页面不存在或已被移动。",
+    backToHome: "返回首页"
   },
   
   es: {
@@ -425,7 +438,11 @@ const translations: Record<Language, Translations> = {
     language: "Idioma",
     light: "Claro",
     dark: "Oscuro",
-    system: "Sistema"
+    system: "Sistema",
+    
+    pageNotFound: "Página no encontrada",
+    pageNotFoundDescription: "La página que buscas no existe o ha sido movida.",
+    backToHome: "Volver al inicio"
   },
   
   fr: {
@@ -529,7 +546,11 @@ const translations: Record<Language, Translations> = {
     language: "Langue",
     light: "Clair",
     dark: "Sombre",
-    system: "Système"
+    system: "Système",
+    
+    pageNotFound: "Page non trouvée",
+    pageNotFoundDescription: "La page que vous recherchez n'existe pas ou a été déplacée.",
+    backToHome: "Retour à l'accueil"
   },
   
   de: {
@@ -633,7 +654,11 @@ const translations: Record<Language, Translations> = {
     language: "Sprache",
     light: "Hell",
     dark: "Dunkel",
-    system: "System"
+    system: "System",
+    
+    pageNotFound: "Seite nicht gefunden",
+    pageNotFoundDescription: "Die Seite, die Sie suchen, existiert nicht oder wurde verschoben.",
+    backToHome: "Zurück zur Startseite"
   },
   
   ja: {
@@ -737,7 +762,11 @@ const translations: Record<Language, Translations> = {
     language: "言語",
     light: "ライト",
     dark: "ダーク",
-    system: "システム"
+    system: "システム",
+    
+    pageNotFound: "ページが見つかりません",
+    pageNotFoundDescription: "お探しのページは存在しないか、移動されました。",
+    backToHome: "ホームに戻る"
   },
   
   ko: {
@@ -841,7 +870,11 @@ const translations: Record<Language, Translations> = {
     language: "언어",
     light: "라이트",
     dark: "다크",
-    system: "시스템"
+    system: "시스템",
+    
+    pageNotFound: "페이지를 찾을 수 없습니다",
+    pageNotFoundDescription: "찾으시는 페이지가 존재하지 않거나 이동되었습니다.",
+    backToHome: "홈으로 돌아가기"
   }
 };
 

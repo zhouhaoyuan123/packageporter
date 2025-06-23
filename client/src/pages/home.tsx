@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { PackageForm } from "@/components/package-form";
 import { InstallationProgress } from "@/components/installation-progress";
 import { DownloadSection } from "@/components/download-section";
@@ -10,6 +10,10 @@ import { Link } from "wouter";
 export default function Home() {
   const [currentJobId, setCurrentJobId] = useState<number | null>(null);
   const { t } = useLanguage();
+
+  useEffect(() => {
+    document.title = t.appTitle;
+  }, [t]);
 
   return (
     <div className="min-h-screen bg-npm-bg dark:bg-gray-900 transition-colors">
