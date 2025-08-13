@@ -96,7 +96,7 @@ export function InstallationProgress({ jobId }: InstallationProgressProps) {
               <div className="mb-1">$ npm install {((job as any).packages as any)?.[0]?.name || "..."}</div>
               <div className="mb-1 text-gray-400">Installing dependencies...</div>
               {(job as any).progress >= 50 && (
-                <div className="text-gray-400">found 0 vulnerabilities</div>
+                <div className="text-gray-400">Please wait ...</div>
               )}
               <div className="animate-pulse">█</div>
             </div>
