@@ -93,7 +93,7 @@ export function InstallationProgress({ jobId }: InstallationProgressProps) {
           {/* Installation Log */}
           <div className="mt-6">
             <div className="bg-npm-dark dark:bg-gray-900 rounded-lg p-4 font-mono text-sm text-green-400 overflow-x-auto">
-              <div className="mb-1">$ npm install {((job as any).packages as any)?.[0]?.name || "..."}</div>
+              <div className="mb-1">$ npm install {((job as any).packages as any[])?.map(pkg => pkg.name).join(' ') || "..."}</div>
               <div className="mb-1 text-gray-400">Installing dependencies...</div>
               {(job as any).progress >= 50 && (
                 <div className="text-gray-400">Please wait ...</div>

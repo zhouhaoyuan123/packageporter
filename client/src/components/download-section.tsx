@@ -40,22 +40,6 @@ export function DownloadSection({ jobId }: DownloadSectionProps) {
     window.open(`/api/installations/${jobId}/download`, '_blank');
   };
 
-  const handleCopyLink = async () => {
-    try {
-      await navigator.clipboard.writeText(downloadUrl);
-      toast({
-        title: t.linkCopied,
-        description: t.linkCopiedDescription,
-      });
-    } catch (error) {
-      toast({
-        title: t.copyFailed,
-        description: t.copyFailedDescription,
-        variant: "destructive",
-      });
-    }
-  };
-
   const handleViewContents = () => {
     setShowContents(!showContents);
   };
@@ -128,18 +112,6 @@ export function DownloadSection({ jobId }: DownloadSectionProps) {
           >
             <Eye className="mr-3 h-5 w-5" />
             {showContents ? t.hideContents : t.viewContents}
-          </Button>
-        </div>
-
-        {/* Copy Download Link */}
-        <div className="mt-4">
-          <Button
-            onClick={handleCopyLink}
-            variant="outline"
-            className="w-full bg-white dark:bg-gray-700 text-npm-dark dark:text-white px-4 py-3 rounded-lg border border-npm-border dark:border-gray-600 hover:bg-npm-bg dark:hover:bg-gray-600 transition-colors font-medium flex items-center justify-center"
-          >
-            <Copy className="mr-2 h-4 w-4" />
-            {t.copyDownloadLink}
           </Button>
         </div>
 
